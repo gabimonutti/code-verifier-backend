@@ -2,12 +2,29 @@
 Node Express project -backend- for OpenBootcamp MERN course
 
 ## Installed Dependencies
--dotenv => Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
--express => Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
--concurrently => Run multiple commands concurrently.
--eslint => ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
--jest => Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
--nodemon => nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
--supertest => The motivation with this module is to provide a high-level abstraction for testing HTTP, while still allowing you to drop down to the lower-level API provided by superagent.
--typescript => TypeScript adds additional syntax to JavaScript to support a tighter integration with your editor. Catch errors early in your editor.
--webpack => webpack is a static module bundler for modern JavaScript applications.
+->"cors": a middleware that allows a server to enable CORS (Cross-Origin Resource Sharing) on a specific route or routes.
+->"dotenv": a zero-dependency module that loads environment variables from a .env file.
+->"express": a fast, minimalist web framework for Node.js.
+->"helmet": a collection of middleware that helps secure a Node.js app by setting various HTTP headers.
+->"mongoose": a MongoDB object modeling tool designed to work in an asynchronous environment.
+->"@types/cors": provides type definitions for the "cors" module.
+->"@types/express": provides type definitions for the "express" module.
+->"@types/jest": provides type definitions for the "jest" module.
+->"@types/node": provides type definitions for Node.js.
+->"@typescript-eslint/eslint-plugin": an eslint plugin that adds support for the TypeScript language.
+->"concurrently": a utility that allows running multiple commands concurrently.
+->"eslint": a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+->"eslint-config-standard-with-typescript": an eslint configuration that extends the popular JavaScript Standard Style with additional TypeScript-specific rules.
+->"eslint-plugin-import": an eslint plugin that helps validate proper imports.
+->"eslint-plugin-n": an eslint plugin that helps enforce naming conventions.
+->"eslint-plugin-promise": an eslint plugin that helps enforce best practices for using promises.
+->"jest": a JavaScript testing framework.
+->"nodemon": a utility that automatically restarts a Node.js app when code changes.
+->"supertest": a library that simplifies testing HTTP servers.
+->"ts-jest": a testing library that allows running Jest tests with TypeScript.
+->"ts-node": a utility that allows running TypeScript files directly.
+->"typescript": a programming language that is a super set of JavaScript, with optional static type-checking.
+->"webpack": a module bundler that transforms assets like JavaScript and HTML into smaller, more efficient files.
+->"webpack-cli": the command-line interface for webpack.
+->"webpack-node-externals": a utility that excludes node_modules from the webpack bundle.
+->"webpack-shell-plugin": a webpack plugin that allows running shell commands.
