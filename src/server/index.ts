@@ -1,5 +1,8 @@
 import express, { Express, Request, Response } from "express";
 
+// Swagger
+import swaggerUi from "swagger-ui-express";
+
 // Security
 import cors from "cors";
 import helmet from "helmet";
@@ -8,11 +11,25 @@ import helmet from "helmet";
 
 // Root Router
 import rootRouter from "../routes"
+import mongoose, { mongo } from "mongoose";
 
 
 
 // * Create Express APP
 const server:Express = express();
+
+// * Swagger COnfig and route
+server.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+        swaggerOptions: {
+            url: "/swagger.json",
+            explorer: true
+        }
+    })
+);
+
 
 // * Define SERVER to use "/api" and use rootRouter from "index.ts" in routes
 // From this point on over: http://localhost:800/api/...
@@ -25,7 +42,17 @@ server.use(
 server.use(express.static("public"));
 
 
-// TODO Mongoose Conection
+// TODO Mongoose Connection
+mongoose.set("strictQuery", false);
+mongoose.connect("mongodb://127.0.0.1:27015/codeverification", function(err) {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log("Connected correctly to DB.");
+    }
+});
+
 
 // * Security Config
 server.use(helmet());
