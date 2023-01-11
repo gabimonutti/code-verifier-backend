@@ -7,6 +7,7 @@ import express, { Request, Response, Router } from "express";
 import helloRouter from "./HelloRouter";
 import { LogInfo } from "../utils/logger";
 import userRouter from "./UserRouter";
+import authRouter from "./AuthRouter";
 
 // Server Instance
 let server = express();
@@ -29,5 +30,7 @@ server.use("/", rootRouter);
 server.use("/hello", helloRouter);
 // Add more routes
 server.use("/users", userRouter);
+// Auth routes
+server.use("/auth", authRouter);
 
 export default server;

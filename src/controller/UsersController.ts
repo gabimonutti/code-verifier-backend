@@ -4,6 +4,8 @@ import { LogSuccess, LogWarning } from "../utils/logger";
 
 // ORM - User Collection
 import { deleteUserByID, getAllUsers, getUserByID, createNewUser, updateUser } from "../domain/orm/User.orm";
+import { IUser } from "../domain/interfaces/IUser.interface";
+
 
 @Route("/api/users")
 @Tags("UserController")
@@ -20,10 +22,12 @@ export class UserController implements IUsersController {
         if(id) {
             LogSuccess(`[/api/users] Get User By ID: ${id}`);
             response = await getUserByID(id);
+            response.password = ""
 
         } else {
             LogSuccess("[/api/users] Get All Users Request")
             response = await getAllUsers();
+            response.password = ""
         }
         
         return response;
@@ -53,20 +57,6 @@ export class UserController implements IUsersController {
             };
         }
         
-        return response;
-    }
-
-    @Post("/")
-    public async createUser(user: any): Promise<any> {
-
-        let response: any = "";
-        
-        await createNewUser(user).then((r) => {
-            LogSuccess(`[/api/users] Create user: ${user}`);
-            response = {
-                message: `User created: ${user.name}`
-            }
-        })
         return response;
     }
 
