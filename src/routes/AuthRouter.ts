@@ -6,7 +6,7 @@ import { IAuth } from "../domain/interfaces/IAuth.interface";
 // BCRIPT for passwords
 import bcrypt from "bcrypt";
 
-// MiddleWare
+// JWT Verification MiddleWare
 import { verifyToken } from "../middlewares/verifyToken.middleware";
 
 // Body Parser
@@ -35,7 +35,8 @@ authRouter.route("/register")
                 name: name,
                 email: email,
                 age: age,
-                password: hashedPassword
+                password: hashedPassword,
+                katas: []
             }
 
             // Obtain Response

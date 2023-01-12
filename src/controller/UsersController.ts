@@ -3,7 +3,7 @@ import { IUsersController } from "./interfaces";
 import { LogSuccess, LogWarning } from "../utils/logger";
 
 // ORM - User Collection
-import { deleteUserByID, getAllUsers, getUserByID, createNewUser, updateUser } from "../domain/orm/User.orm";
+import { deleteUserByID, getAllUsers, getKatasFromUser, getUserByID, updateUser } from "../domain/orm/User.orm";
 import { IUser } from "../domain/interfaces/IUser.interface";
 
 
@@ -16,20 +16,36 @@ export class UserController implements IUsersController {
      * @returns All user or user found by ID
      */
     @Get("/")
-    public async getUsers(@Query()id?: string): Promise<any> {
+    public async getUsers(@Query()page:number, @Query()limit:number,@Query()id?: string): Promise<any> {
         let response: any = "";
         
         if(id) {
             LogSuccess(`[/api/users] Get User By ID: ${id}`);
             response = await getUserByID(id);
-            response.password = ""
 
         } else {
             LogSuccess("[/api/users] Get All Users Request")
-            response = await getAllUsers();
-            response.password = ""
+            response = await getAllUsers(page, limit);
         }
         
+        return response;
+    }
+
+    @Get("/katas")
+    public async getKatas(@Query()page:number, @Query()limit:number,@Query()id: string | undefined): Promise<any> {
+        let response: any = "";
+        
+        if(id) {
+            LogSuccess(`[/api/users/katas] Get Katas from User By ID: ${id}`);
+            response = await getKatasFromUser(page, limit, id);
+
+        } else {
+            LogSuccess("[/api/users/katas] Get All Katas without ID")
+            response = {
+                message: "ID from user is needed"
+            }
+        }
+
         return response;
     }
 

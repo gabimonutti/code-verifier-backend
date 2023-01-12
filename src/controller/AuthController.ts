@@ -48,7 +48,7 @@ export class AuthController implements IAuthController {
                 message: `Welcome ${data.user.name}`
             }
         } else {
-            LogWarning("[/api/auth/login] Register needs Auth Entity (email and password)")
+            LogWarning("[/api/auth/login] Login needs Auth Entity (email and password)")
             response = {
                 message: "Please, provide an email and a password to login",
                 error: "[AUTH ERROR]: Email and Password are needed"
@@ -72,8 +72,6 @@ export class AuthController implements IAuthController {
         if(id) {
             LogSuccess(`[/api/users] Get User Data By ID: ${id}`);
             response = await getUserByID(id);
-            
-            response.password = ""
         }
         
         return response;
